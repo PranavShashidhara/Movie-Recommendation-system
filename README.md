@@ -1,59 +1,56 @@
+# Movie Recommendation System Using Netflix Dataset
 
-## Project Overview
-This project aims to build a movie recommendation system using the Netflix dataset. The primary focus is on implementing User-User Collaborative Filtering for personalized recommendations.
+This project implements a movie recommendation system using the **Netflix Prize Dataset**. The focus is on applying **Collaborative Filtering** methods to provide personalized movie recommendations. The system includes both **User-User Collaborative Filtering** and **Movie-Movie Collaborative Filtering**. 
 
-### Key Steps:
-1. **Data Preprocessing**:
-- Processed the entire dataset of 100 million records.
-- Extracted data for 100 movies and 200 users for analysis.
-- Completed Exploratory Data Analysis (EDA) on a sampled subset of 10 million records.
-- Stored preprocessed data in **Parquet format** using Amazon S3.
+## Key Steps:
+### 1. Data Preprocessing:
+- Processed a dataset of 100 million records, focusing on 100 movies and 2000 users for analysis.
+- Performed **Exploratory Data Analysis (EDA)** on a 10 million record sample and the full dataset.
+- Preprocessed data stored in **Parquet format** on **Amazon S3**.
 
-2. **Data Transformation**:
-- Converted the data into dictionaries for efficient access and reduced time complexity:
+### 2. Data Transformation:
+- Converted the dataset into efficient dictionaries for reduced time complexity:
   - `user2movie`: Maps users to the movies they rated.
   - `movie2user`: Maps movies to the users who rated them.
   - `usermovie2rating`: Maps user-movie pairs to their ratings.
-  - `usermovie2rating_test`: Similar mapping for testing purposes.
+  - `usermovie2rating_test`: Used for testing purposes.
 
-3. **Collaborative Filtering**:
-- Implemented **User-User Collaborative Filtering using Matrix Factorization** on a subset of ~200,000 records.
-- Subset includes 1,000 users and 200 movies.
+### 3. Collaborative Filtering:
+- Implemented **User-User Collaborative Filtering** using **Matrix Factorization** on a subset of 10 million records (1,000 users, 200 movies).
+- **Movie-Movie Collaborative Filtering** was also applied using the same subset.
 
-4. **Ongoing Development**:
-- Currently developing User-User Collaborative Filtering models using:
-  - Bayesian Matrix Factorization.
-- Building a **Restricted Boltzmann Machine (RBM)** for recommendations.
+### 4. Advanced Models:
+- Implemented a **Restricted Boltzmann Machine (RBM)** for enhancing recommendation accuracy.
 
-## Performance Metrics
-### Results from User-User Collaborative Filtering:
+## Performance Metrics:
+### User-User Collaborative Filtering:
 - **Mean Squared Error (MSE):**
-- Train MSE: 0.5854
-- Test MSE: 0.8420
-
+  - Train MSE: 0.5854
+  - Test MSE: 0.8420
 - **Root Mean Squared Error (RMSE):**
-- Train RMSE: ~0.765
-- Test RMSE: ~0.917
+  - Train RMSE: ~0.765
+  - Test RMSE: ~0.917
 
 ### Comparison with Netflix Prize Benchmark:
-- The competition's baseline RMSE was approximately 1.025, and the winning target was 0.91.
-- The model's performance demonstrates close alignment with the desired benchmark, especially for the test set.
+- The baseline RMSE for the competition was 1.025, with the winning RMSE target around 0.91.
+- The model’s performance is close to the benchmark, demonstrating the robustness of the approach, especially on the test set.
 
-## Tools and Technologies
-- **Big Data Processing:** PySpark
+## Tools and Technologies:
+- **Big Data Processing:** PySpark, Databricks
 - **Storage:** Amazon S3
-- **Libraries:**
-- Python
-- `pyspark`
-- `numpy`, `pandas`
+- **Libraries Used:**
+  - Python
+  - `pyspark`, `numpy`, `pandas`
 - **Modeling Techniques:**
-- User-User Collaborative Filtering
-- Standard and Bayesian Matrix Factorization
-- Restricted Boltzmann Machine (RBM)
+  - User-User Collaborative Filtering
+  - Movie-Movie Collaborative Filtering
+  - Matrix Factorization
+  - Restricted Boltzmann Machine (RBM)
 
-## Sources
+## Conclusion:
+This project successfully demonstrated the effectiveness of **User-User Collaborative Filtering** and **Movie-Movie Collaborative Filtering**. These methods produced promising results, with RMSE values closely aligned to the Netflix Prize benchmark. Although the other models (Bayesian Matrix Factorization and RBM) were developed for future refinement, the primary focus was on achieving strong performance in the collaborative filtering techniques. Further experimentation and optimization could help improve the models and expand the dataset for better scalability.
+
+
+## Sources:
 - [Netflix Prize Dataset](https://www.kaggle.com/datasets/netflix-inc/netflix-prize-data)
 - [Netflix Prize Benchmark Scores](https://en.wikipedia.org/wiki/Netflix_Prize)
-
-## Conclusion
-This project demonstrates an effective implementation of a User-User Collaborative Filtering-based recommendation system. The results closely align with the benchmark values from the Netflix Prize competition, validating the robustness of the approach. Further experimentation with larger datasets and advanced models like RBM and Bayesian Matrix Factorization can potentially improve performance.
